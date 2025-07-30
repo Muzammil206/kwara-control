@@ -24,7 +24,7 @@ const controlData = [
     coordinates: "8.4799° N, 4.5418° E",
     status: "Active",
     type: "Primary Control",
-    lastUpdate: "2 minutes ago",
+    lastUpdate: "2 minutes ago....",
   },
   {
     id: "KW002",
