@@ -9,6 +9,13 @@ import { Separator } from "@/components/ui/separator"
 import { Search, MapPin, Activity, Settings, User, LogOut, Menu } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet" 
 import { Map } from "@/components/map"
+import { supabase } from "@/lib/supabaseClient";
+import { useEffect } from "react"
+
+
+
+
+
 
 const controlData = [
   {
@@ -48,6 +55,24 @@ const controlData = [
 export default function DashboardPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedControl, setSelectedControl] = useState(controlData[0])
+  const [control, setControl] = useState('')
+
+
+
+
+
+
+
+
+useEffect(() => {
+    setControl(selectedControl.id)
+    // Optionally log or use 'control' elsewhere
+    // console.log("Current control id:", selectedControl.id)
+}, [selectedControl])
+
+
+
+
 
   const filteredControls = controlData.filter(
     (control) =>
