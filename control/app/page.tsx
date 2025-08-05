@@ -1,44 +1,112 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Shield, Zap, Globe, Radar } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export default function WelcomePage() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [])
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-400 via-cyan-400 to-blue-500 flex items-center justify-center p-4">
-      <div className="text-center space-y-8 max-w-4xl mx-auto">
-        <div className="space-y-4">
-          <h1 className="text-6xl md:text-8xl font-bold text-white drop-shadow-lg">Welcome</h1>
-          <div className="text-2xl md:text-4xl font-semibold text-white/90 drop-shadow-md">
-            to Kwara State Control Portal
-          </div>
-        </div>
+    <div className="min-h-screen relative overflow-hidden bg-white">
+      {/* Blurred Gradient Background */}
+      <div
+        className="absolute inset-0 z-0 opacity-70"
+        style={{
+          background: `radial-gradient(at 10% 20%, #8a2be2, transparent 50%),
+                       radial-gradient(at 90% 80%, #ff69b4, transparent 50%),
+                       radial-gradient(at 50% 0%, #00bfff, transparent 50%)`,
+          filter: "blur(100px)",
+          transform: "scale(1.5)",
+        }}
+      ></div>
 
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-          <p className="text-xl text-white/80 mb-6 leading-relaxed">
-            Your comprehensive platform for monitoring and managing control systems across Kwara State. Access real-time
-            data, coordinate information, and system controls all in one place.
-          </p>
-
-          <Link href="/dashboard">
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold px-8 py-3 text-lg">
-              Enter Dashboard
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-            <h3 className="text-xl font-semibold text-white mb-2">Real-time Monitoring</h3>
-            <p className="text-white/70">Monitor all control systems in real-time</p>
+      {/* Main Content */}
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
+        <div className="text-center space-y-16 max-w-6xl mx-auto">
+          {/* Hero Section with Stripe-like Typography */}
+          <div className="space-y-8">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold text-stripe-dark-blue leading-tight tracking-tighter drop-shadow-lg">
+              Financial <br className="hidden md:block" />
+              infrastructure <br className="hidden md:block" />
+              to grow your <br className="hidden md:block" />
+              <span className="bg-gradient-to-r from-stripe-gradient-start via-stripe-gradient-middle to-stripe-gradient-end bg-clip-text text-transparent">
+                revenue
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl text-stripe-text-light max-w-3xl mx-auto leading-relaxed">
+              Join the millions of companies of all sizes that use Kwara State Control Portal to manage and coordinate
+              critical infrastructure, gain real-time insights, and ensure operational excellence.
+            </p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-            <h3 className="text-xl font-semibold text-white mb-2">Coordinate Search</h3>
-            <p className="text-white/70">Search and locate controls by coordinates</p>
+
+          {/* Call to Action with Stripe-like Button Design */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link href="/dashboard">
+              <Button
+                size="lg"
+                className="h-14 px-8 rounded-lg bg-stripe-dark-blue text-white text-lg font-semibold shadow-md hover:bg-blue-800 transition-colors duration-200 flex items-center group"
+              >
+                <span className="relative z-10">Launch Control Center</span>
+                <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </Button>
+            </Link>
+            <Link href="#">
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-14 px-8 rounded-lg border-2 border-gray-300 text-stripe-text-dark text-lg font-semibold shadow-sm hover:bg-gray-50 transition-colors duration-200 flex items-center group bg-transparent"
+              >
+                <span className="relative z-10">Contact Support</span>
+                <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </Button>
+            </Link>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-            <h3 className="text-xl font-semibold text-white mb-2">System Management</h3>
-            <p className="text-white/70">Manage and control system operations</p>
+
+          {/* Feature Cards - Simplified and integrated */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-12">
+            {[
+              {
+                icon: Shield,
+                title: "Secure Access",
+                desc: "Robust security protocols for data integrity.",
+              },
+              {
+                icon: Zap,
+                title: "Real-time Data",
+                desc: "Instant monitoring and live system updates.",
+              },
+              {
+                icon: Globe,
+                title: "State Coverage",
+                desc: "Comprehensive oversight across Kwara State.",
+              },
+              {
+                icon: Radar,
+                title: "Advanced Control",
+                desc: "Precision management of all infrastructure.",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] text-left"
+              >
+                <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
+                  <feature.icon className="h-6 w-6" />
+                </div>
+                <h4 className="text-xl font-bold text-stripe-dark-blue mb-2">{feature.title}</h4>
+                <p className="text-sm text-stripe-text-light">{feature.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
