@@ -107,11 +107,11 @@ export function SidebarContent({
                           {control.status}
                         </Badge>
                       </div>
-                      <p className="text-xs text-gray-300 mb-1 flex items-center">
+                      <p className="text-xs text-blue-600 mb-1 flex items-center">
                         <MapPin className="h-3 w-3 mr-1 text-blue-400" />
                         {control.coordinates}
                       </p>
-                      <p className="text-xs text-gray-300">Location: {control.properties.location || "N/A"}</p>
+                      <p className="text-xs text-black-300">Location: {control.properties.location || "N/A"}</p>
                     </CardContent>
                   </Card>
                 ))}
