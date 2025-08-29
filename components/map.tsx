@@ -561,7 +561,7 @@ const ControlPointsMap = () => {
       );
     };
     return (
-      <div className="absolute top-4 right-40 bg-white rounded-lg shadow p-3 z-[1100] flex flex-col gap-2 min-w-[180px]">
+      <div className="absolute top-20 right-10 bg-white rounded-lg shadow p-3 z-[1100] flex flex-col gap-2 min-w-[180px]">
         <div className="font-semibold text-xs text-gray-700 mb-1">CORS Coverage</div>
         <div className="flex gap-2 mb-2">
           <button
