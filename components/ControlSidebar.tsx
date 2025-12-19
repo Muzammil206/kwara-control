@@ -153,7 +153,8 @@ const ControlSidebar = ({ features, onSelect, selected }: ControlSidebarProps) =
                     </div>
                     <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 mt-2">
                       <div>E: {f.properties.easting_m}m</div>
-                      <div>N: {f.properties.northing_m}m</div>
+                      <div>N: {f.properties.northing_m}m...</div>
+                      <div>CRS: {f.properties.crs}</div>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-gray-600">
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -27,6 +27,7 @@ export async function GET(req) {
       easting_m: row.easting_m,
       northing_m: row.northing_m,
       height_m: row.height_m,
+      crs: row.crs,
     },
   })) : [];
 

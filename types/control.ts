@@ -7,6 +7,7 @@ export type ControlPointProperties = {
   easting_m: number
   northing_m: number
   height_m: number
+  crs: string
 }
 
 export type ControlPointFeature = {

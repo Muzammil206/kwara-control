@@ -11,6 +11,7 @@ export type ControlPointProperties = {
   easting_m: number;
   northing_m: number;
   height_m: number;
+  crs: any;
 };
 
 export type ControlPointFeature = {
@@ -65,7 +66,7 @@ const ControlPointModal = ({ isOpen, onClose, properties }: ControlPointModalPro
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
       <div className="relative bg-white rounded-lg shadow-2xl max-w-md w-full mx-4 max-h-[90vh] overflow-hidden">
         <div className="bg-blue-600 text-white px-6 py-4 flex items-center justify-between">
-          <h2 className="text-xl font-bold">Control Point Details</h2>
+          <h2 className="text-xl font-bold">Control Point Detail</h2>
           <button onClick={onClose} className="hover:bg-blue-700/20 p-1 rounded-full">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -94,7 +95,7 @@ const ControlPointModal = ({ isOpen, onClose, properties }: ControlPointModalPro
             <span>{properties.northing_m}</span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="font-medium">Height (m):</span>
+            <span className="font-medium">Height :</span>
             <span>{properties.height_m}</span>
           </div>
         </div>
@@ -414,6 +415,7 @@ const ControlSidebar = ({ features, onSelect, selected }: ControlSidebarProps) =
                     <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 mt-2">
                       <div>E: {f.properties.easting_m}m</div>
                       <div>N: {f.properties.northing_m}m</div>
+                      
                     </div>
                     <div className="flex items-center gap-2 text-xs text-gray-600">
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -425,6 +427,7 @@ const ControlSidebar = ({ features, onSelect, selected }: ControlSidebarProps) =
                         />
                       </svg>
                       Height: {f.properties.height_m}m
+                      <div>CRS: {f.properties.crs} </div>
                     </div>
                   </div>
                 </div>
